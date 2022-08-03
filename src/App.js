@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Header from "./components/Header";
 import About from "./components/About";
+import Stats from "./components/Stats";
 
 const AppContainer = styled.div``;
 
@@ -13,6 +14,7 @@ const App = () => {
         <Header />
       </HeaderContainer>
       <About />
+      <Stats />
     </AppContainer>
   );
 };
