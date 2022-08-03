@@ -5,11 +5,11 @@ export const Container = styled.div``;
 
 export const Logo = styled.img``;
 
-const Header = () => {
+const Header = ({ className }) => {
   const navLinks = ["About", "Discover", "Get Started"];
 
   return (
-    <Container>
+    <Container className={className}>
       <Logo />
       <NavLinks links={navLinks} />
     </Container>
