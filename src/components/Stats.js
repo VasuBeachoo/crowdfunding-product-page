@@ -8,9 +8,13 @@ export const StatsContainer = styled.div``;
 export const ProgressBar = styled.div``;
 
 const Stats = ({ className, stats }) => {
+  let key = 3000;
+
   return (
     <Container className={className}>
-      <StatsContainer></StatsContainer>
+      <StatsContainer>
+        {stats && stats.map((stat) => <Stat key={key++} />)}
+      </StatsContainer>
       <ProgressBar />
     </Container>
   );
