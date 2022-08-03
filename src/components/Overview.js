@@ -12,7 +12,7 @@ export const Description = styled.p``;
 
 export const Btns = styled.div``;
 
-const About = ({ className, name, description }) => {
+const Overview = ({ className, name, description }) => {
   return (
     <Container className={className}>
       <Icon />
@@ -26,4 +26,4 @@ const About = ({ className, name, description }) => {
   );
 };
 
-export default About;
+export default Overview;
