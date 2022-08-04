@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mixinLightText } from "../mixins";
 
 export const Container = styled.div`
   display: flex;
@@ -7,9 +8,15 @@ export const Container = styled.div`
   align-items: flex-start;
 `;
 
-export const HeavyText = styled.h1``;
+export const HeavyText = styled.h1`
+  font-size: 1.75rem;
+  margin: 0;
+`;
 
-export const LightText = styled.p``;
+export const LightText = styled.p`
+  ${mixinLightText}
+  margin: 0.1rem 0 0 0;
+`;
 
 const Stat = ({ className, heavyText, lightText }) => {
   return (

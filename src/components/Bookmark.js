@@ -8,7 +8,7 @@ export const Icon = styled.img`
 `;
 
 export const Label = styled.p`
-  background-color: hsl(0, 0%, 90%);
+  background-color: hsl(0, 0%, 95%);
   color: var(--Dark-gray);
   font-weight: 500;
   border-radius: 1.5rem;

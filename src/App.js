@@ -35,6 +35,7 @@ const ProductContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  gap: 1.5rem;
   width: 50%;
   transform: translateY(-5rem);
 `;
