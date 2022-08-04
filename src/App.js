@@ -13,6 +13,7 @@ const AppContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  background-color: hsl(0, 0%, 96%);
 `;
 
 const HeaderContainer = styled.div`
@@ -35,6 +36,7 @@ const ProductContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 50%;
+  transform: translateY(-5rem);
 `;
 
 const App = () => {
