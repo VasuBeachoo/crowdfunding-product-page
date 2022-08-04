@@ -10,7 +10,7 @@ const StockLeft = ({ className, stockAmt }) => {
   return (
     <Container className={className}>
       <StockAmt>{stockAmt}</StockAmt>
-      <StockLeft> left</StockLeft>
+      <StockText> left</StockText>
     </Container>
   );
 };

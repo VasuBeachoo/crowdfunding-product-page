@@ -17,7 +17,16 @@ const About = ({ className, description, rewards }) => {
       <Heading>About this project</Heading>
       <Description>{description}</Description>
       <Rewards>
-        {rewards && rewards.map((reward) => <Reward key={key++} />)}
+        {rewards &&
+          rewards.map((reward) => (
+            <Reward
+              key={key++}
+              name={reward.name}
+              pledgeReq={reward.pledgeReq}
+              description={reward.desc}
+              stockAmt={reward.stockAmt}
+            />
+          ))}
       </Rewards>
     </Container>
   );

@@ -24,7 +24,7 @@ const Reward = ({ className, name, pledgeReq, description, stockAmt }) => {
       <Description>{description}</Description>
       <BottomContainer>
         <StockLeft stockAmt={stockAmt} />
-        <Button>Select Reward</Button>
+        <Button>Label</Button>
       </BottomContainer>
     </Container>
   );
