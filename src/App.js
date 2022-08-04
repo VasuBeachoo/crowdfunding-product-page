@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import GlobalStyle from "./GlobalStyle";
 import Header from "./components/Header";
 import Overview from "./components/Overview";
 import Stats from "./components/Stats";
 import About from "./components/About";
+import headerBg from "./assets/image-hero-desktop.jpg";
 import logoMastercraft from "./assets/logo-mastercraft.svg";
 
 const AppContainer = styled.div`
@@ -19,6 +21,12 @@ const HeaderContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  min-height: 20rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0)),
+    url(${headerBg});
+  background-size: cover;
+  background-position: bottom;
+  padding: 1.75rem 6rem;
 `;
 
 const ProductContainer = styled.div`
@@ -67,6 +75,7 @@ const App = () => {
 
   return (
     <AppContainer>
+      <GlobalStyle />
       <HeaderContainer>
         <Header />
       </HeaderContainer>
