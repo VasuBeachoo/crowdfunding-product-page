@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import NavLinks from "./NavLinks";
+import logo from "../assets/logo.svg";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
 
 export const Logo = styled.img``;
 
@@ -10,7 +17,7 @@ const Header = ({ className }) => {
 
   return (
     <Container className={className}>
-      <Logo />
+      <Logo src={logo} alt="crowdfund-logo" />
       <NavLinks links={navLinks} />
     </Container>
   );

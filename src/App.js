@@ -5,9 +5,29 @@ import Stats from "./components/Stats";
 import About from "./components/About";
 import logoMastercraft from "./assets/logo-mastercraft.svg";
 
-const AppContainer = styled.div``;
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+`;
 
-const HeaderContainer = styled.div``;
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+`;
+
+const ProductContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%;
+`;
 
 const App = () => {
   const productData = {
@@ -50,9 +70,18 @@ const App = () => {
       <HeaderContainer>
         <Header />
       </HeaderContainer>
-      <Overview name={productData.name} description={productData.shortDesc} />
-      <Stats stats={productData.stats} />
-      <About description={productData.longDesc} rewards={productData.rewards} />
+      <ProductContainer>
+        <Overview
+          icon={productData.icon}
+          name={productData.name}
+          description={productData.shortDesc}
+        />
+        <Stats stats={productData.stats} />
+        <About
+          description={productData.longDesc}
+          rewards={productData.rewards}
+        />
+      </ProductContainer>
     </AppContainer>
   );
 };

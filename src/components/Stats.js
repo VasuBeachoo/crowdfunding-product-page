@@ -1,11 +1,25 @@
 import styled from "styled-components";
 import Stat from "./Stat";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+`;
 
-export const StatsContainer = styled.div``;
+export const StatsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
 
-export const ProgressBar = styled.div``;
+export const ProgressBar = styled.div`
+  width: 100%;
+`;
 
 const Stats = ({ className, stats }) => {
   const textStats = [
