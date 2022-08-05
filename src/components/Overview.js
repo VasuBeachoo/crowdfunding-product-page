@@ -28,7 +28,7 @@ export const Name = styled.h1`
 export const Description = styled.p`
   ${mixinLightText}
   font-size: 1rem;
-  margin: 0.5rem 0 1rem;
+  margin: 0.5rem 0 2rem;
 `;
 
 export const Btns = styled.div`
@@ -37,9 +37,17 @@ export const Btns = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin: 0 0 1rem 0;
 `;
 
-const Overview = ({ className, icon, name, description }) => {
+const Overview = ({
+  className,
+  icon,
+  name,
+  description,
+  bookmarked,
+  setBookmarked,
+}) => {
   return (
     <Container className={className}>
       <Icon src={icon} alt="product-logo" />
@@ -47,7 +55,7 @@ const Overview = ({ className, icon, name, description }) => {
       <Description>{description}</Description>
       <Btns>
         <Button>Back this project</Button>
-        <Bookmark />
+        <Bookmark bookmarked={bookmarked} setBookmarked={setBookmarked} />
       </Btns>
     </Container>
   );

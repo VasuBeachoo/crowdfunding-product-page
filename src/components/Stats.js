@@ -65,7 +65,7 @@ const Stats = ({ className, stats }) => {
     while (i < renderedStats.length) {
       newRenderedStats.push(renderedStats[i]);
       if (i !== renderedStats.length - 1) {
-        newRenderedStats.push(<Divider />);
+        newRenderedStats.push(<Divider key={key++ + 1000} />);
       }
       i++;
     }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import Header from "./components/Header";
@@ -86,6 +87,8 @@ const App = () => {
     ],
   };
 
+  const [bookmarked, setBookmarked] = useState(false);
+
   return (
     <AppContainer>
       <GlobalStyle />
@@ -97,6 +100,8 @@ const App = () => {
           icon={productData.icon}
           name={productData.name}
           description={productData.shortDesc}
+          bookmarked={bookmarked}
+          setBookmarked={setBookmarked}
         />
         <Stats stats={productData.stats} />
         <About

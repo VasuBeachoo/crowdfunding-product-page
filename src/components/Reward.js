@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import StockLeft from "./StockLeft";
 import Button from "./Button";
 import { mixinLightText } from "../mixins";
@@ -12,6 +12,7 @@ export const Container = styled.div`
   border-radius: 0.85rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  opacity: ${(props) => props.theme.name === "unavailable" && "0.5"};
   padding: 2rem 2.25rem;
 `;
 
@@ -48,18 +49,27 @@ export const BottomContainer = styled.div`
 `;
 
 const Reward = ({ className, name, pledgeReq, description, stockAmt }) => {
+  const themes = {
+    available: { name: "available", btnBgClr: "var(--Moderate-cyan)" },
+    unavailable: { name: "unavailable", btnBgClr: "var(--Dark-gray)" },
+  };
+
   return (
-    <Container className={className}>
-      <TopContainer>
-        <Name>{name}</Name>
-        <PledgeReq>Pledge ${pledgeReq} or more</PledgeReq>
-      </TopContainer>
-      <Description>{description}</Description>
-      <BottomContainer>
-        <StockLeft stockAmt={stockAmt} />
-        <Button>Select Reward</Button>
-      </BottomContainer>
-    </Container>
+    <ThemeProvider
+      theme={stockAmt === 0 ? themes.unavailable : themes.available}
+    >
+      <Container className={className}>
+        <TopContainer>
+          <Name>{name}</Name>
+          <PledgeReq>Pledge ${pledgeReq} or more</PledgeReq>
+        </TopContainer>
+        <Description>{description}</Description>
+        <BottomContainer>
+          <StockLeft stockAmt={stockAmt} />
+          <Button>{stockAmt === 0 ? "Out of stock" : "Select Reward"}</Button>
+        </BottomContainer>
+      </Container>
+    </ThemeProvider>
   );
 };
 
