@@ -36,7 +36,7 @@ const ProductContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 1.5rem;
-  width: 50%;
+  width: 60%;
   transform: translateY(-5rem);
 `;
 
@@ -52,8 +52,18 @@ const App = () => {
       totalBackers: 5007,
       daysLeft: 56,
     },
-    longDesc:
-      "The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.\n\nFeaturing artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.",
+    longDesc: (
+      <span>
+        The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform
+        that elevates your screen to a more comfortable viewing height. Placing
+        your monitor at eye level has the potential to improve your posture and
+        make you more comfortable while at work, helping you stay focused on the
+        task at hand. <br /> <br />
+        Featuring artisan craftsmanship, the simplicity of design creates extra
+        desk space below your computer to allow notepads, pens, and USB sticks
+        to be stored under the stand.
+      </span>
+    ),
     rewards: [
       {
         name: "Bamboo Stand",
