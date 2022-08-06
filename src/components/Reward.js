@@ -21,6 +21,7 @@ export const TopContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
   width: 100%;
 `;
 
@@ -31,6 +32,7 @@ export const Name = styled.h1`
 
 export const PledgeReq = styled.p`
   color: var(--Moderate-cyan);
+  text-align: right;
   font-weight: 500;
   margin: 0;
 `;
@@ -45,10 +47,36 @@ export const BottomContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
   width: 100%;
 `;
 
-const Reward = ({ className, name, pledgeReq, description, stockAmt }) => {
+export const renderRewards = (rewards, btnAction) => {
+  let key = 2000;
+
+  return (
+    rewards &&
+    rewards.map((reward) => (
+      <Reward
+        key={key++}
+        name={reward.name}
+        pledgeReq={reward.pledgeReq}
+        description={reward.desc}
+        stockAmt={reward.stockAmt}
+        btnAction={reward.stockAmt !== 0 && btnAction}
+      />
+    ))
+  );
+};
+
+const Reward = ({
+  className,
+  name,
+  pledgeReq,
+  description,
+  stockAmt,
+  btnAction,
+}) => {
   const themes = {
     available: { name: "available", btnBgClr: "var(--Moderate-cyan)" },
     unavailable: { name: "unavailable", btnBgClr: "var(--Dark-gray)" },
@@ -61,12 +89,16 @@ const Reward = ({ className, name, pledgeReq, description, stockAmt }) => {
       <Container className={className}>
         <TopContainer>
           <Name>{name}</Name>
-          <PledgeReq>Pledge ${pledgeReq} or more</PledgeReq>
+          {pledgeReq !== undefined && (
+            <PledgeReq>Pledge ${pledgeReq} or more</PledgeReq>
+          )}
         </TopContainer>
         <Description>{description}</Description>
         <BottomContainer>
-          <StockLeft stockAmt={stockAmt} />
-          <Button>{stockAmt === 0 ? "Out of stock" : "Select Reward"}</Button>
+          {stockAmt !== undefined && <StockLeft stockAmt={stockAmt} />}
+          <Button onClick={btnAction}>
+            {stockAmt === 0 ? "Out of stock" : "Select Reward"}
+          </Button>
         </BottomContainer>
       </Container>
     </ThemeProvider>

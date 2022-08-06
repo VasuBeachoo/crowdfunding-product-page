@@ -36,6 +36,7 @@ export const Btns = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
   width: 100%;
   margin: 0 0 1rem 0;
 `;
@@ -47,6 +48,7 @@ const Overview = ({
   description,
   bookmarked,
   setBookmarked,
+  openPopup,
 }) => {
   return (
     <Container className={className}>
@@ -54,7 +56,7 @@ const Overview = ({
       <Name>{name}</Name>
       <Description>{description}</Description>
       <Btns>
-        <Button>Back this project</Button>
+        <Button onClick={openPopup}>Back this project</Button>
         <Bookmark bookmarked={bookmarked} setBookmarked={setBookmarked} />
       </Btns>
     </Container>

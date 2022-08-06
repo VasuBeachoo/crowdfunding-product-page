@@ -14,8 +14,9 @@ export const Container = styled.div`
 export const StatsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 3rem;
   width: 100%;
   margin: 0 0 1.5rem 0;
 `;
@@ -23,6 +24,7 @@ export const StatsContainer = styled.div`
 export const Divider = styled.hr`
   height: 3rem;
   opacity: 0.5;
+  margin: 0;
 `;
 
 export const ProgressBar = styled.div`
@@ -76,7 +78,10 @@ const Stats = ({ className, stats }) => {
     <Container className={className}>
       <StatsContainer>{displayStats(textStats)}</StatsContainer>
       <ProgressBar>
-        <ProgressBar width="90%" bgColor="var(--Moderate-cyan)" />
+        <ProgressBar
+          width={(stats.amtBacked / stats.amtGoal) * 100 + "%"}
+          bgColor="var(--Moderate-cyan)"
+        />
       </ProgressBar>
     </Container>
   );

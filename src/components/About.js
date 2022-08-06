@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Reward from "./Reward";
+import { renderRewards } from "./Reward";
 import { mixinSection, mixinLightText } from "../mixins";
 
 export const Container = styled.div`
@@ -30,25 +30,12 @@ export const Rewards = styled.div`
   margin: 1.65rem 0 2rem 0;
 `;
 
-const About = ({ className, description, rewards }) => {
-  let key = 2000;
-
+const About = ({ className, description, rewards, openPopup }) => {
   return (
     <Container classNaame={className}>
       <Heading>About this project</Heading>
       <Description>{description}</Description>
-      <Rewards>
-        {rewards &&
-          rewards.map((reward) => (
-            <Reward
-              key={key++}
-              name={reward.name}
-              pledgeReq={reward.pledgeReq}
-              description={reward.desc}
-              stockAmt={reward.stockAmt}
-            />
-          ))}
-      </Rewards>
+      <Rewards>{renderRewards(rewards, openPopup)}</Rewards>
     </Container>
   );
 };

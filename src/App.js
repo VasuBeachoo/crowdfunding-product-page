@@ -1,10 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
+import { mixinSection } from "./mixins";
 import Header from "./components/Header";
 import Overview from "./components/Overview";
 import Stats from "./components/Stats";
 import About from "./components/About";
+import PopupPledges from "./components/PopupPledges";
 import headerBg from "./assets/image-hero-desktop.jpg";
 import logoMastercraft from "./assets/logo-mastercraft.svg";
 
@@ -41,8 +43,27 @@ const ProductContainer = styled.div`
   transform: translateY(-5rem);
 `;
 
+const DarkOverlay = styled.div`
+  position: fixed;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--Black);
+  opacity: 0.5;
+`;
+
+const PopupContainer = styled.div`
+  ${mixinSection}
+  position: fixed;
+  top: 6.25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60%;
+`;
+
 const App = () => {
-  const productData = {
+  let productData = {
     icon: logoMastercraft,
     name: "Mastercraft Bamboo Monitor Riser",
     shortDesc:
@@ -88,6 +109,15 @@ const App = () => {
   };
 
   const [bookmarked, setBookmarked] = useState(false);
+  const [popup, setPopup] = useState(false);
+
+  function openPopup() {
+    setPopup(true);
+  }
+
+  function closePopup() {
+    setPopup(false);
+  }
 
   return (
     <AppContainer>
@@ -102,13 +132,28 @@ const App = () => {
           description={productData.shortDesc}
           bookmarked={bookmarked}
           setBookmarked={setBookmarked}
+          openPopup={openPopup}
         />
         <Stats stats={productData.stats} />
         <About
           description={productData.longDesc}
           rewards={productData.rewards}
+          openPopup={openPopup}
         />
       </ProductContainer>
+
+      {popup && (
+        <>
+          <DarkOverlay />
+          <PopupContainer>
+            <PopupPledges
+              productName={productData.name}
+              rewards={productData.rewards}
+              closePopup={closePopup}
+            />
+          </PopupContainer>
+        </>
+      )}
     </AppContainer>
   );
 };
