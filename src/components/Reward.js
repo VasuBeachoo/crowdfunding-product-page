@@ -1,7 +1,7 @@
 import styled, { ThemeProvider } from "styled-components";
 import StockLeft from "./StockLeft";
 import Button from "./Button";
-import { mixinLightText } from "../mixins";
+import { themes, mixinLightText } from "../mixins";
 
 export const Container = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const Container = styled.div`
   border-radius: 0.85rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-  opacity: ${(props) => props.theme.name === "unavailable" && "0.5"};
+  opacity: ${(props) => (props.theme.name === "unavailable" ? "0.5" : "1")};
   padding: 2rem 2.25rem;
 `;
 
@@ -51,7 +51,7 @@ export const BottomContainer = styled.div`
   width: 100%;
 `;
 
-export const renderRewards = (rewards, btnAction) => {
+export const renderRewards = (rewards, openPopup) => {
   let key = 2000;
 
   return (
@@ -63,7 +63,7 @@ export const renderRewards = (rewards, btnAction) => {
         pledgeReq={reward.pledgeReq}
         description={reward.desc}
         stockAmt={reward.stockAmt}
-        btnAction={reward.stockAmt !== 0 && btnAction}
+        openPopup={reward.stockAmt === 0 ? undefined : openPopup}
       />
     ))
   );
@@ -75,13 +75,8 @@ const Reward = ({
   pledgeReq,
   description,
   stockAmt,
-  btnAction,
+  openPopup,
 }) => {
-  const themes = {
-    available: { name: "available", btnBgClr: "var(--Moderate-cyan)" },
-    unavailable: { name: "unavailable", btnBgClr: "var(--Dark-gray)" },
-  };
-
   return (
     <ThemeProvider
       theme={stockAmt === 0 ? themes.unavailable : themes.available}
@@ -96,7 +91,7 @@ const Reward = ({
         <Description>{description}</Description>
         <BottomContainer>
           {stockAmt !== undefined && <StockLeft stockAmt={stockAmt} />}
-          <Button onClick={btnAction}>
+          <Button onClick={openPopup}>
             {stockAmt === 0 ? "Out of stock" : "Select Reward"}
           </Button>
         </BottomContainer>

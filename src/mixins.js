@@ -1,5 +1,10 @@
 import { css } from "styled-components";
 
+export const themes = {
+  available: { name: "available", btnBgClr: "var(--Moderate-cyan)" },
+  unavailable: { name: "unavailable", btnBgClr: "var(--Dark-gray)" },
+};
+
 export const mixinSection = css`
   width: 100%;
   background-color: var(--White);

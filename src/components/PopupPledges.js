@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Reward, { renderRewards } from "./Reward";
+import PopupOption, { renderPopupOptions } from "./PopupOption";
 import { mixinLightText } from "../mixins";
 import iconClose from "../assets/icon-close-modal.svg";
 
@@ -51,11 +51,11 @@ const PopupPledges = ({ className, productName, rewards, closePopup }) => {
         Want to support us in bringing {productName} out in the world?
       </Paragraph>
       <Rewards>
-        <Reward
+        <PopupOption
           name="Pledge with no reward"
           description="Choose to support us with no reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email."
         />
-        {renderRewards(rewards)}
+        {renderPopupOptions(rewards)}
       </Rewards>
     </Container>
   );
