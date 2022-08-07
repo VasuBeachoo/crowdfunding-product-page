@@ -9,6 +9,7 @@ export const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  user-select: none;
   border-radius: 0.85rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
@@ -28,6 +29,7 @@ export const TopContainer = styled.div`
 export const Name = styled.h1`
   font-size: 1.35rem;
   margin: 0;
+  transition: 0.2s;
 `;
 
 export const PledgeReq = styled.p`

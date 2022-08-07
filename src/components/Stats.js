@@ -77,7 +77,7 @@ const Stats = ({ className, stats }) => {
   return (
     <Container className={className}>
       <StatsContainer>{displayStats(textStats)}</StatsContainer>
-      <ProgressBar>
+      <ProgressBar width="100%">
         <ProgressBar
           width={(stats.amtBacked / stats.amtGoal) * 100 + "%"}
           bgColor="var(--Moderate-cyan)"

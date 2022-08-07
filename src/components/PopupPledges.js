@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import PopupOption, { renderPopupOptions } from "./PopupOption";
 import { mixinLightText } from "../mixins";
@@ -43,6 +44,20 @@ export const Rewards = styled.div`
 `;
 
 const PopupPledges = ({ className, productName, rewards, closePopup }) => {
+  const [selectedId, setSelectedId] = useState(-999);
+
+  const options = [
+    <PopupOption
+      key="10000"
+      id={-1}
+      name="Pledge with no reward"
+      description="Choose to support us with no reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email."
+      selectedId={selectedId}
+      setSelectedId={setSelectedId}
+    />,
+    renderPopupOptions(rewards, selectedId, setSelectedId),
+  ];
+
   return (
     <Container className={className}>
       <CloseIcon src={iconClose} alt="close-icon" onClick={closePopup} />
@@ -50,13 +65,7 @@ const PopupPledges = ({ className, productName, rewards, closePopup }) => {
       <Paragraph>
         Want to support us in bringing {productName} out in the world?
       </Paragraph>
-      <Rewards>
-        <PopupOption
-          name="Pledge with no reward"
-          description="Choose to support us with no reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email."
-        />
-        {renderPopupOptions(rewards)}
-      </Rewards>
+      <Rewards>{options}</Rewards>
     </Container>
   );
 };
