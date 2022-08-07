@@ -53,19 +53,22 @@ export const BottomContainer = styled.div`
   width: 100%;
 `;
 
-export const renderRewards = (rewards, openPopup) => {
+export const renderRewards = (rewards, openPopup, setBtnUsedId) => {
   let key = 2000;
+  let id = 0;
 
   return (
     rewards &&
     rewards.map((reward) => (
       <Reward
         key={key++}
+        id={id++}
         name={reward.name}
         pledgeReq={reward.pledgeReq}
         description={reward.desc}
         stockAmt={reward.stockAmt}
         openPopup={reward.stockAmt === 0 ? undefined : openPopup}
+        setBtnUsedId={setBtnUsedId}
       />
     ))
   );
@@ -73,11 +76,13 @@ export const renderRewards = (rewards, openPopup) => {
 
 const Reward = ({
   className,
+  id,
   name,
   pledgeReq,
   description,
   stockAmt,
   openPopup,
+  setBtnUsedId,
 }) => {
   return (
     <ThemeProvider
@@ -93,7 +98,12 @@ const Reward = ({
         <Description>{description}</Description>
         <BottomContainer>
           {stockAmt !== undefined && <StockLeft stockAmt={stockAmt} />}
-          <Button onClick={openPopup}>
+          <Button
+            onClick={() => {
+              setBtnUsedId(id);
+              openPopup();
+            }}
+          >
             {stockAmt === 0 ? "Out of stock" : "Select Reward"}
           </Button>
         </BottomContainer>

@@ -30,12 +30,18 @@ export const Rewards = styled.div`
   margin: 1.65rem 0 2rem 0;
 `;
 
-const About = ({ className, description, rewards, openPopup }) => {
+const About = ({
+  className,
+  description,
+  rewards,
+  openPopup,
+  setBtnUsedId,
+}) => {
   return (
     <Container classNaame={className}>
       <Heading>About this project</Heading>
       <Description>{description}</Description>
-      <Rewards>{renderRewards(rewards, openPopup)}</Rewards>
+      <Rewards>{renderRewards(rewards, openPopup, setBtnUsedId)}</Rewards>
     </Container>
   );
 };

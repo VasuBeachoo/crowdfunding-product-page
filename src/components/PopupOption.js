@@ -4,6 +4,7 @@ import { themes, mixinLightText } from "../mixins";
 import PopupSelect, { OuterCircle } from "./PopupSelect";
 import { Container, Name, PledgeReq, Description } from "./Reward";
 import StockLeft from "./StockLeft";
+import PledgeInput from "./PledgeInput";
 import Button from "./Button";
 
 export const OptionContainer = styled(Container)`
@@ -144,7 +145,8 @@ const PopupOption = ({
           <>
             <Divider />
             <BottomContainer>
-              <Label>Enter your pledge</Label>
+              <Label>Enter your pledge:</Label>
+              <PledgeInput />
               <Button>Continue</Button>
             </BottomContainer>
           </>

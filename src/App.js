@@ -110,12 +110,14 @@ const App = () => {
 
   const [bookmarked, setBookmarked] = useState(false);
   const [popup, setPopup] = useState(false);
+  const [btnUsedId, setBtnUsedId] = useState(-999);
 
   function openPopup() {
     setPopup(true);
   }
 
   function closePopup() {
+    setBtnUsedId(-999);
     setPopup(false);
   }
 
@@ -139,6 +141,7 @@ const App = () => {
           description={productData.longDesc}
           rewards={productData.rewards}
           openPopup={openPopup}
+          setBtnUsedId={setBtnUsedId}
         />
       </ProductContainer>
 
@@ -150,6 +153,7 @@ const App = () => {
               productName={productData.name}
               rewards={productData.rewards}
               closePopup={closePopup}
+              btnUsedId={btnUsedId}
             />
           </PopupContainer>
         </>

@@ -43,8 +43,14 @@ export const Rewards = styled.div`
   padding: 2rem;
 `;
 
-const PopupPledges = ({ className, productName, rewards, closePopup }) => {
-  const [selectedId, setSelectedId] = useState(-999);
+const PopupPledges = ({
+  className,
+  productName,
+  rewards,
+  closePopup,
+  btnUsedId,
+}) => {
+  const [selectedId, setSelectedId] = useState(btnUsedId);
 
   const options = [
     <PopupOption
