@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled, { css } from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { themes, mixinLightText } from "../mixins";
@@ -128,6 +129,8 @@ const PopupOption = ({
   setSelectedId,
   setPopupType,
 }) => {
+  const [valid, setValid] = useState(false);
+
   return (
     <ThemeProvider
       theme={stockAmt === 0 ? themes.unavailable : themes.available}
@@ -140,7 +143,7 @@ const PopupOption = ({
           <InfoContainer>
             <HeaderContainer>
               <Name>{name}</Name>
-              {pledgeReq !== undefined && (
+              {pledgeReq !== undefined && pledgeReq > 0 && (
                 <PledgeReq>Pledge ${pledgeReq} or more</PledgeReq>
               )}
               {stockAmt !== undefined && <StockLeft stockAmt={stockAmt} />}
@@ -153,8 +156,11 @@ const PopupOption = ({
             <Divider />
             <BottomContainer>
               <Label>Enter your pledge:</Label>
-              <PledgeInput />
-              <Button onClick={() => setPopupType("completed")}>
+              <PledgeInput pledgeReq={pledgeReq} setValid={setValid} />
+              <Button
+                theme={valid ? themes.available : themes.unavailable}
+                onClick={valid ? () => setPopupType("completed") : undefined}
+              >
                 Continue
               </Button>
             </BottomContainer>

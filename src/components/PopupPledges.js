@@ -58,6 +58,7 @@ const PopupPledges = ({
       key="10000"
       id={-1}
       name="Pledge with no reward"
+      pledgeReq={0}
       description="Choose to support us with no reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email."
       selectedId={selectedId}
       setSelectedId={setSelectedId}

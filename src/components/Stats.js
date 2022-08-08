@@ -79,7 +79,7 @@ const Stats = ({ className, stats }) => {
       <StatsContainer>{displayStats(textStats)}</StatsContainer>
       <ProgressBar width="100%">
         <ProgressBar
-          width={(stats.amtBacked / stats.amtGoal) * 100 + "%"}
+          width={Math.min((stats.amtBacked / stats.amtGoal) * 100, 100) + "%"}
           bgColor="var(--Moderate-cyan)"
         />
       </ProgressBar>
