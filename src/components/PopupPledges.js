@@ -47,6 +47,7 @@ const PopupPledges = ({
   className,
   productName,
   rewards,
+  setPopupType,
   closePopup,
   btnUsedId,
 }) => {
@@ -60,8 +61,9 @@ const PopupPledges = ({
       description="Choose to support us with no reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email."
       selectedId={selectedId}
       setSelectedId={setSelectedId}
+      setPopupType={setPopupType}
     />,
-    renderPopupOptions(rewards, selectedId, setSelectedId),
+    renderPopupOptions(rewards, selectedId, setSelectedId, setPopupType),
   ];
 
   return (

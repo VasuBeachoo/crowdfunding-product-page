@@ -7,6 +7,7 @@ import Overview from "./components/Overview";
 import Stats from "./components/Stats";
 import About from "./components/About";
 import PopupPledges from "./components/PopupPledges";
+import PopupCompleted from "./components/PopupCompleted";
 import headerBg from "./assets/image-hero-desktop.jpg";
 import logoMastercraft from "./assets/logo-mastercraft.svg";
 
@@ -62,6 +63,37 @@ const PopupContainer = styled.div`
   width: 67%;
 `;
 
+function renderPopup(
+  popupType,
+  productData,
+  setPopupType,
+  closePopup,
+  btnUsedId
+) {
+  switch (popupType) {
+    case "pledges":
+      return (
+        <PopupPledges
+          productName={productData.name}
+          rewards={productData.rewards}
+          setPopupType={setPopupType}
+          closePopup={closePopup}
+          btnUsedId={btnUsedId}
+        />
+      );
+    case "completed":
+      return (
+        <PopupCompleted
+          productName={productData.name}
+          setPopupType={setPopupType}
+          closePopup={closePopup}
+        />
+      );
+    default:
+      <></>;
+  }
+}
+
 const App = () => {
   let productData = {
     icon: logoMastercraft,
@@ -110,6 +142,7 @@ const App = () => {
 
   const [bookmarked, setBookmarked] = useState(false);
   const [popup, setPopup] = useState(false);
+  const [popupType, setPopupType] = useState("pledges");
   const [btnUsedId, setBtnUsedId] = useState(-999);
 
   function openPopup() {
@@ -149,12 +182,13 @@ const App = () => {
         <>
           <DarkOverlay />
           <PopupContainer>
-            <PopupPledges
-              productName={productData.name}
-              rewards={productData.rewards}
-              closePopup={closePopup}
-              btnUsedId={btnUsedId}
-            />
+            {renderPopup(
+              popupType,
+              productData,
+              setPopupType,
+              closePopup,
+              btnUsedId
+            )}
           </PopupContainer>
         </>
       )}

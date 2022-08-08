@@ -90,7 +90,12 @@ export const Label = styled.p`
   }
 `;
 
-export const renderPopupOptions = (rewards, selectedId, setSelectedId) => {
+export const renderPopupOptions = (
+  rewards,
+  selectedId,
+  setSelectedId,
+  setPopupType
+) => {
   let key = 5000;
   let id = 0;
 
@@ -106,6 +111,7 @@ export const renderPopupOptions = (rewards, selectedId, setSelectedId) => {
         stockAmt={reward.stockAmt}
         setSelectedId={setSelectedId}
         selectedId={selectedId}
+        setPopupType={setPopupType}
       />
     ))
   );
@@ -120,6 +126,7 @@ const PopupOption = ({
   stockAmt,
   selectedId,
   setSelectedId,
+  setPopupType,
 }) => {
   return (
     <ThemeProvider
@@ -147,7 +154,9 @@ const PopupOption = ({
             <BottomContainer>
               <Label>Enter your pledge:</Label>
               <PledgeInput />
-              <Button>Continue</Button>
+              <Button onClick={() => setPopupType("completed")}>
+                Continue
+              </Button>
             </BottomContainer>
           </>
         )}
