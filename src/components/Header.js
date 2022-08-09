@@ -19,7 +19,6 @@ export const Logo = styled.img``;
 export const HeaderNavLinks = styled(NavLinks)`
   position: relative;
   border-radius: 1rem;
-  z-index: 3;
 
   @media (max-width: 1000px) {
     display: ${(props) => (props.menu ? "flex" : "none")};
@@ -34,6 +33,7 @@ export const HeaderNavLinks = styled(NavLinks)`
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
       rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     padding: 1.5rem 2.25rem;
+    z-index: 3;
 
     ${Link} {
       width: 100%;
