@@ -6,6 +6,10 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+
+  @media (max-width: 1000px) {
+    align-items: center;
+  }
 `;
 
 export const HeavyText = styled.h1`

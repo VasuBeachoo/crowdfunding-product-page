@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { mixinSection } from "../mixins";
 import Header from "./Header";
@@ -27,7 +27,7 @@ const HeaderContainer = styled.div`
     url(${(props) => props.bg});
   background-size: cover;
   background-position: bottom;
-  padding: 1.75rem 6rem;
+  padding: 2.75rem 7.5vw;
 `;
 
 const ProductContainer = styled.div`
@@ -38,6 +38,10 @@ const ProductContainer = styled.div`
   gap: 1.5rem;
   width: 60%;
   transform: translateY(-5rem);
+
+  @media (max-width: 1000px) {
+    width: 85%;
+  }
 `;
 
 const DarkOverlay = styled.div`
@@ -56,7 +60,15 @@ const PopupContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 67%;
+  width: 70%;
+
+  @media (max-width: 1000px) {
+    width: 85%;
+  }
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 function renderPopup(
@@ -97,6 +109,7 @@ const ProductPage = ({ className, productData, pledgeAmt }) => {
   const [popup, setPopup] = useState(false);
   const [popupType, setPopupType] = useState("pledges");
   const [btnUsedId, setBtnUsedId] = useState(-999);
+  const [menu, setMenu] = useState(false);
 
   function openPopup() {
     setPopup(true);
@@ -107,10 +120,22 @@ const ProductPage = ({ className, productData, pledgeAmt }) => {
     setPopup(false);
   }
 
+  function handleResize() {
+    if (window.innerWidth > 1000) {
+      setMenu(false);
+    }
+  }
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  });
+
   return (
     <PageContainer className={className}>
       <HeaderContainer bg={productData.headerBg}>
-        <Header />
+        <Header menu={menu} setMenu={setMenu} />
       </HeaderContainer>
       <ProductContainer>
         <Overview
@@ -130,20 +155,19 @@ const ProductPage = ({ className, productData, pledgeAmt }) => {
         />
       </ProductContainer>
 
+      {(popup || menu) && <DarkOverlay />}
+
       {popup && (
-        <>
-          <DarkOverlay />
-          <PopupContainer>
-            {renderPopup(
-              popupType,
-              productData,
-              setPopupType,
-              closePopup,
-              btnUsedId,
-              pledgeAmt
-            )}
-          </PopupContainer>
-        </>
+        <PopupContainer>
+          {renderPopup(
+            popupType,
+            productData,
+            setPopupType,
+            closePopup,
+            btnUsedId,
+            pledgeAmt
+          )}
+        </PopupContainer>
       )}
     </PageContainer>
   );

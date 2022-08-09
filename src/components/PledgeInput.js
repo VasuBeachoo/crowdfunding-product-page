@@ -31,6 +31,10 @@ export const ValueInput = styled.input`
   &:focus {
     border-color: var(--Moderate-cyan);
   }
+
+  @media (max-width: 1000px) {
+    width: clamp(10rem, 25vw, 12rem);
+  }
 `;
 
 const PledgeInput = ({ className, pledgeReq, setPledge, setValid }) => {

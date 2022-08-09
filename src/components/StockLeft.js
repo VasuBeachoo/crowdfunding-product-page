@@ -7,6 +7,11 @@ export const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 0.4rem;
+
+  @media (max-width: 1000px) {
+    align-items: flex-start;
+    width: 100%;
+  }
 `;
 
 export const StockAmt = styled.h1`

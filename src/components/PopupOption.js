@@ -40,6 +40,10 @@ export const TopContainer = styled.div`
         }
       }
     `}
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -67,12 +71,27 @@ export const HeaderContainer = styled.div`
     text-align: center;
     margin-right: auto;
   }
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+
+    & ${PledgeReq} {
+      text-align: left;
+      margin-right: 0;
+    }
+  }
 `;
 
 export const Divider = styled.hr`
   width: 100%;
   opacity: 0.5;
   margin: 0.05rem 0 1.75rem 0;
+`;
+
+export const Label = styled.p`
+  ${mixinLightText} {
+    font-size: 1.05rem;
+  }
 `;
 
 export const BottomContainer = styled.div`
@@ -83,11 +102,19 @@ export const BottomContainer = styled.div`
   gap: 1.5rem;
   width: 100%;
   padding: 0 2.25rem 2rem;
-`;
 
-export const Label = styled.p`
-  ${mixinLightText} {
-    font-size: 1.05rem;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    ${Label} {
+      display: none;
+    }
+
+    ${Button} {
+      width: clamp(10.25rem, 25vw, 12.25rem);
+    }
   }
 `;
 

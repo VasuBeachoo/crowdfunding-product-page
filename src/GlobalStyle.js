@@ -19,6 +19,7 @@ const GlobalStyle = styled.createGlobalStyle`
   }
 
   body {
+    background-color: hsl(0, 0%, 96%);
     margin: 0;
   }
 `;

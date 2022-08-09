@@ -22,7 +22,7 @@ export const Heading = styled.h1`
 
 export const Paragraph = styled.p`
   ${mixinLightText}
-  font-size: clamp(0.85rem, 2vw,1rem);
+  font-size: clamp(0.95rem, 2vw, 1rem);
   max-width: 28rem;
   margin: 0 0 1.25rem;
 `;

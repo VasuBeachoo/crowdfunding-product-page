@@ -41,6 +41,20 @@ export const Rewards = styled.div`
   max-height: 60vh;
   font-size: 95%;
   padding: 2rem;
+
+  @media (max-width: 1000px) {
+    padding: 2rem 1rem 2rem 0.2rem;
+  }
+
+  @media (max-width: 500px) {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 2rem 0.2rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 
 const PopupPledges = ({

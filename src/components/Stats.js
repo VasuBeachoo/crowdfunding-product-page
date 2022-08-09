@@ -19,12 +19,22 @@ export const StatsContainer = styled.div`
   gap: 3rem;
   width: 100%;
   margin: 0 0 1.5rem 0;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 `;
 
 export const Divider = styled.hr`
   height: 3rem;
   opacity: 0.5;
   margin: 0;
+
+  @media (max-width: 1000px) {
+    width: 30%;
+    height: auto;
+  }
 `;
 
 export const ProgressBar = styled.div`

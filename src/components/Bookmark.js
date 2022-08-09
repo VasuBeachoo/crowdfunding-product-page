@@ -13,6 +13,10 @@ export const Icon = styled.img`
     `};
   transition: 0.2s;
   z-index: 2;
+
+  @media (max-width: 1000px) {
+    position: relative;
+  }
 `;
 
 export const Label = styled.p`
@@ -24,6 +28,11 @@ export const Label = styled.p`
   padding: 0.83rem 2rem 0.83rem 4.25rem;
   margin: 0;
   transition: 0.2s;
+
+  @media (max-width: 1000px) {
+    display: none;
+    transform: none;
+  }
 `;
 
 export const Container = styled.div`

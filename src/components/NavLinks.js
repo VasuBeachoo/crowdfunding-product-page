@@ -11,6 +11,7 @@ export const Container = styled.div`
 export const Link = styled.p`
   user-select: none;
   color: var(--White);
+  margin: 0;
 
   &:hover {
     cursor: pointer;

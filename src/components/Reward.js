@@ -24,19 +24,33 @@ export const TopContainer = styled.div`
   align-items: center;
   gap: 2rem;
   width: 100%;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+  }
 `;
 
 export const Name = styled.h1`
+  text-align: left;
+  width: 100%;
   font-size: 1.35rem;
   margin: 0;
   transition: 0.2s;
 `;
 
 export const PledgeReq = styled.p`
-  color: var(--Moderate-cyan);
   text-align: right;
+  width: 100%;
+  color: var(--Moderate-cyan);
   font-weight: 500;
   margin: 0;
+
+  @media (max-width: 1000px) {
+    text-align: left;
+  }
 `;
 
 export const Description = styled.p`
@@ -51,6 +65,13 @@ export const BottomContainer = styled.div`
   align-items: center;
   gap: 2rem;
   width: 100%;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 `;
 
 export const renderRewards = (rewards, openPopup, setBtnUsedId) => {
