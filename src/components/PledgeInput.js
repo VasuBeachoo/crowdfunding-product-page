@@ -33,7 +33,7 @@ export const ValueInput = styled.input`
   }
 `;
 
-const PledgeInput = ({ className, pledgeReq, setValid }) => {
+const PledgeInput = ({ className, pledgeReq, setPledge, setValid }) => {
   return (
     <PledgeInputContainer className={className}>
       <DollarSign>$</DollarSign>
@@ -41,9 +41,12 @@ const PledgeInput = ({ className, pledgeReq, setValid }) => {
         type="text"
         onChange={(e) => {
           const input = parseInt(e.target.value);
-          if (input >= pledgeReq && e.target.value === input.toString())
+          if (input >= pledgeReq && e.target.value === input.toString()) {
+            setPledge(input);
             setValid(true);
-          else setValid(false);
+          } else {
+            setValid(false);
+          }
         }}
       />
     </PledgeInputContainer>

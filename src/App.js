@@ -68,7 +68,8 @@ function renderPopup(
   productData,
   setPopupType,
   closePopup,
-  btnUsedId
+  btnUsedId,
+  pledgeAmt
 ) {
   switch (popupType) {
     case "pledges":
@@ -79,6 +80,7 @@ function renderPopup(
           setPopupType={setPopupType}
           closePopup={closePopup}
           btnUsedId={btnUsedId}
+          pledgeAmt={pledgeAmt}
         />
       );
     case "completed":
@@ -95,7 +97,7 @@ function renderPopup(
 }
 
 const App = () => {
-  let productData = {
+  let [productData, setProductData] = useState({
     icon: logoMastercraft,
     name: "Mastercraft Bamboo Monitor Riser",
     shortDesc:
@@ -138,7 +140,7 @@ const App = () => {
         stockAmt: 0,
       },
     ],
-  };
+  });
 
   const [bookmarked, setBookmarked] = useState(false);
   const [popup, setPopup] = useState(false);
@@ -152,6 +154,16 @@ const App = () => {
   function closePopup() {
     setBtnUsedId(-999);
     setPopup(false);
+  }
+
+  function pledgeAmt(amt, rewardId) {
+    let updatedProductData = productData;
+
+    updatedProductData.stats.amtBacked += amt;
+    updatedProductData.stats.totalBackers++;
+    rewardId >= 0 && updatedProductData.rewards[rewardId].stockAmt--;
+
+    setProductData(updatedProductData);
   }
 
   return (
@@ -187,7 +199,8 @@ const App = () => {
               productData,
               setPopupType,
               closePopup,
-              btnUsedId
+              btnUsedId,
+              pledgeAmt
             )}
           </PopupContainer>
         </>

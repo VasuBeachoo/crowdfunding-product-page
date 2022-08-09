@@ -95,7 +95,8 @@ export const renderPopupOptions = (
   rewards,
   selectedId,
   setSelectedId,
-  setPopupType
+  setPopupType,
+  pledgeAmt
 ) => {
   let key = 5000;
   let id = 0;
@@ -113,6 +114,7 @@ export const renderPopupOptions = (
         setSelectedId={setSelectedId}
         selectedId={selectedId}
         setPopupType={setPopupType}
+        pledgeAmt={pledgeAmt}
       />
     ))
   );
@@ -128,7 +130,9 @@ const PopupOption = ({
   selectedId,
   setSelectedId,
   setPopupType,
+  pledgeAmt,
 }) => {
+  const [pledge, setPledge] = useState(0);
   const [valid, setValid] = useState(false);
 
   return (
@@ -156,10 +160,21 @@ const PopupOption = ({
             <Divider />
             <BottomContainer>
               <Label>Enter your pledge:</Label>
-              <PledgeInput pledgeReq={pledgeReq} setValid={setValid} />
+              <PledgeInput
+                pledgeReq={pledgeReq}
+                setPledge={setPledge}
+                setValid={setValid}
+              />
               <Button
                 theme={valid ? themes.available : themes.unavailable}
-                onClick={valid ? () => setPopupType("completed") : undefined}
+                onClick={
+                  valid
+                    ? () => {
+                        pledgeAmt(pledge, id);
+                        setPopupType("completed");
+                      }
+                    : undefined
+                }
               >
                 Continue
               </Button>

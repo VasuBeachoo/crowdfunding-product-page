@@ -50,6 +50,7 @@ const PopupPledges = ({
   setPopupType,
   closePopup,
   btnUsedId,
+  pledgeAmt,
 }) => {
   const [selectedId, setSelectedId] = useState(btnUsedId);
 
@@ -63,8 +64,15 @@ const PopupPledges = ({
       selectedId={selectedId}
       setSelectedId={setSelectedId}
       setPopupType={setPopupType}
+      pledgeAmt={pledgeAmt}
     />,
-    renderPopupOptions(rewards, selectedId, setSelectedId, setPopupType),
+    renderPopupOptions(
+      rewards,
+      selectedId,
+      setSelectedId,
+      setPopupType,
+      pledgeAmt
+    ),
   ];
 
   return (
